@@ -1,12 +1,24 @@
 class Solution {
 public:
-    vector<int> countBits(int n) {
+    vector<int> countBits(int A) {
         
-        vector<int> help(n+1,0);
-        
-        for (int i=0 ;i<=n ; i++)
-            help[i] = __builtin_popcount(i);
-        
-        return help;
+    int cnt = 0 ;
+    vector<int> help(A + 1, 0);
+    //long long int ans = 0;
+    
+    for (int i=1 ;i<=A ;i++)
+    {
+        if (i%2!=0)
+        {
+            help[i] = 1 + help[i-1];
+        }else
+        {
+            help[i] = help[i/2];
+        }
+        // ans+= help[i];
+        // ans = ans %M;
+    }
+    
+    return help;
     }
 };
