@@ -20,19 +20,18 @@ public:
          {
              TreeNode *temp = curr->left;
              
-             
-             while (temp && temp->right!=NULL)
-                 temp = temp->right;
-             
              if (temp)
              {
+              
+                 while (temp && temp->right!=NULL)
+                 temp = temp->right;
+            
                 temp->right = curr->right;
                 curr->right = curr->left;
                 curr->left = NULL;
-             } 
-             
-             
-             
+                
+            }
+              
              curr = curr->right;
          }
           
