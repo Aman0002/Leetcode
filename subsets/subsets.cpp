@@ -1,29 +1,27 @@
 class Solution {
 public:
-    void subsets_rec (vector<vector<int>> & ans , vector<int> & nums , int si , vector<int> temp)
+    void help(vector<int> &nums,int start,vector<int> &bag,vector<vector<int>> &ans)
     {
-        if (si >= nums.size())
+        //base case
+        if(start==nums.size())
         {
-            ans.push_back(temp);
-            return ;
+            ans.push_back(bag);
+            return;
         }
+        //rec step
         
-        //Not taking first index
-        subsets_rec (ans , nums , si+1 , temp);
-        
-        //Taking first index
-        temp.push_back(nums[si]);
-        
-        subsets_rec (ans , nums , si+1 , temp);
-        
-            
+        //item include
+        bag.push_back(nums[start]);
+        help(nums,start+1,bag,ans);
+        bag.pop_back();
+        //item not include
+        help(nums,start+1,bag,ans);
     }
+           
     vector<vector<int>> subsets(vector<int>& nums) {
-        
         vector<vector<int>> ans;
-        
-        vector<int> temp;
-        subsets_rec (ans , nums , 0 , temp);
+        vector<int> bag;
+        help(nums,0,bag,ans);
         return ans;
     }
 };
