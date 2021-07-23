@@ -15,8 +15,7 @@ public:
         {
             help[i] = help[i/2];
         }
-        // ans+= help[i];
-        // ans = ans %M;
+       
     }
     
     return help;
